@@ -25,8 +25,8 @@ const getUserWithEmail = function(email) {
 
   return pool.query(text, values)
   .then(res => res.rows[0])
-  .catch(error => console.error('User Null', error.stack))
-}
+  .catch(error => console.error('User Null', error.stack));
+};
 exports.getUserWithEmail = getUserWithEmail;
 
 /**
@@ -44,7 +44,7 @@ const getUserWithId = function(id) {
   return pool.query(text,values)
   .then(res => res.rows[0])
   .catch(error => console.error('User Null', error.stack));
-}
+};
 exports.getUserWithId = getUserWithId;
 
 
@@ -77,7 +77,7 @@ const addUser =  function(user) {
   user.id = userId;
   users[userId] = user;
   return Promise.resolve(user); */
-}
+};
 exports.addUser = addUser;
 
 /// Reservations
@@ -108,7 +108,7 @@ const getAllReservations = function(guest_id, limit = 10) {
     return pool.query(text, values)
     .then(res => res.rows)
     .catch(err => console.error("Error", err.stack));
-}
+};
 exports.getAllReservations = getAllReservations;
 
 /// Properties
@@ -180,7 +180,7 @@ const getAllProperties = function(options, limit = 10) {
   // 6
   return pool.query(queryString, queryParams)
   .then(res => res.rows);
-}
+};
 exports.getAllProperties = getAllProperties;
 
 
@@ -203,10 +203,7 @@ const addProperty = function(property) {
 
   return pool.query(text, values)
   .then(res => res.rows[0])
-  .catch(err => console.error('Error', err.stack))
-  // const propertyId = Object.keys(properties).length + 1;
-  // property.id = propertyId;
-  // properties[propertyId] = property;
-  // return Promise.resolve(property);
-}
+    .catch(err => console.error('Error', err.stack));
+};
+
 exports.addProperty = addProperty;
